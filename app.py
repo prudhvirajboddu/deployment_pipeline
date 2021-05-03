@@ -3,6 +3,7 @@ import os
 import numpy as np
 # tf Keras
 import tensorflow as tf
+from tensorflow.keras import backend as K
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
@@ -64,9 +65,9 @@ def upload():
         # Process your result for human
         pred_class = preds.argmax(axis=-1)
         if preds[0][0]>=0.5:
-            return "Melanoma Lesion"
+            return "Melanoma Lesion"#+"\nconfidence :"+format(preds[0][0]*100,'.2f')+"%"
         else:
-            return "Non-Melanoma Lesion"
+            return "Non-Melanoma Lesion"#+"\nconfidence :"+format(preds[0][0]*100,'.2f')+"%"
     return None
 
 
