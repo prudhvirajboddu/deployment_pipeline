@@ -1,13 +1,12 @@
+#imports
 import os
 import numpy as np
-
 # tf Keras
 import tensorflow as tf
-from tensorflow.keras.applications.imagenet_utils import preprocess_input, decode_predictions
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
-class FixedDropout(tf.keras.layers.Dropout):
+class FixedDropout(tf.keras.layers.Dropout): # for tpu trained model to work in cpu for deployment
   def _get_noise_shape(self, inputs):
     if self.noise_shape is None:
         return self.noise_shape
@@ -31,8 +30,8 @@ def model_predict(img_path, model):
 
     # Preprocessing the image
     x = image.img_to_array(img)
-    x = x.astype("float") / 255.0
-    x = np.expand_dims(x,0)
+    x = x.astype("float") / 255.0 #normailizing the image between [0-255]
+    x = np.expand_dims(x,0) #adding batch size of 1 to get shape (1,img_height,img_width,channels=3)
     # print(x.shape)
 
     preds = model.predict(x)
