@@ -72,7 +72,7 @@ def upload():
 
 
 if __name__ == '__main__':
-    model=load_model('new.h5',custom_objects={'FixedDropout':FixedDropout},compile=False)
+    model=load_model('added_model_5.h5',custom_objects={'FixedDropout':FixedDropout},compile=False)
     #just need to change the model if it is efficientnet trained on tpu add custom objects code 
     # app.run(host="0.0.0.0", port=5000, debug=True)
     http_server=WSGIServer(('0.0.0.0',5000),app)
