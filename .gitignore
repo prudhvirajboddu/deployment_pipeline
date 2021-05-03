@@ -1,0 +1,5 @@
+#folders
+.vscode
+__pycache__
+#files
+*.h5

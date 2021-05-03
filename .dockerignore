@@ -1,0 +1,7 @@
+#ignorefiles
+.gitattributes
+*.md
+#folders
+.vscode
+__pycache__
+.git
