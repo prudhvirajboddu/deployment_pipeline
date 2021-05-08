@@ -38,6 +38,8 @@ EXPOSE 5000
 
 COPY . .
 
+RUN curl https://storage.googleapis.com/models_melanoma/b6structure.h5 --output "b6structure.h5"
+
 RUN pip3 install -r requirements.txt
 
 CMD ["python","app.py"]

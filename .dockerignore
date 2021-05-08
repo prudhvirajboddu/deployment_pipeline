@@ -1,6 +1,7 @@
 #ignorefiles
 .gitattributes
 *.md
+*.h5
 #folders
 .vscode
 __pycache__
