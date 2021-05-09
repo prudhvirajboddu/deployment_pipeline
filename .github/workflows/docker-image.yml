@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag melanoma:online
+      run: docker build . --file Dockerfile --tag prudhvi9999/melanoma:online
