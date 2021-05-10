@@ -22,7 +22,7 @@ jobs:
           run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
 
         - name: Build the tagged Docker image
-          run: docker build . --file DockerFile --tag prudhvi9999/from_git_actions:$(date+%s)
+          run: docker build . -f DockerFile -t prudhvi9999/from_git_actions:$(date+%s)
 
         - name: Push the tagged Docker image
           run: docker push prudhvi9999/from_git_actions:$(date+%s)
