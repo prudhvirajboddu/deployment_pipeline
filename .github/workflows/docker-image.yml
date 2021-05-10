@@ -1,0 +1,16 @@
+name: melanoma web application
+on: push
+jobs:
+  build-container:
+    name: Build container
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2 
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: prudhvi9999/new
+          tags: ${{ github.run_number }}, latest
