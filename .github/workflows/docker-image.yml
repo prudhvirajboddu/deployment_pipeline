@@ -36,15 +36,16 @@ jobs:
         - name: Checkout repository
           uses: actions/checkout@v2
 
-        - name: Build Docker image
-          run: docker build . -t $IMAGE_NAME
+        # - name: Build Docker image
+        #   run: docker build . -t $IMAGE_NAME
 
-        - name: Push Docker image
-          run: docker push $IMAGE_NAME
+        # - name: Push Docker image
+        #   run: docker push $IMAGE_NAME
         
         - name: setting project id
-          run: gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
-          
+          run: gcloud config set project experimental-285401
+          #secrets not working in run command
+
         - name: Deploy Docker image
           run: gcloud run deploy melanoma-detection --image $IMAGE_NAME --region asia-south1 --memory 2Gi --platform managed
           #service is the name of the app you want to deploy on
