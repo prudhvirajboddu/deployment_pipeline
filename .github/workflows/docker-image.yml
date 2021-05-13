@@ -20,7 +20,7 @@ jobs:
         name: Setup Gcloud Account
         runs-on: ubuntu-latest
         env:
-          IMAGE_NAME: asia.gcr.io/experimental-285401/melanoma-detection
+          IMAGE_NAME: asia.gcr.io/experimental-285401/melanoma
         steps:
 
         - name: Login
@@ -36,17 +36,17 @@ jobs:
         - name: Checkout repository
           uses: actions/checkout@v2
 
-        # - name: Build Docker image
-        #   run: docker build . -t $IMAGE_NAME
+        - name: Build Docker image
+          run: docker build . -t $IMAGE_NAME:latest
 
-        # - name: Push Docker image
-        #   run: docker push $IMAGE_NAME
+        - name: Push Docker image
+          run: docker push $IMAGE_NAME:latest
         
         - name: setting project id
           run: gcloud config set project experimental-285401
           #secrets not working in run command
 
         - name: Deploy Docker image
-          run: gcloud run deploy melanoma-detection --image $IMAGE_NAME --region asia-south1 --memory 2Gi --platform managed
+          run: gcloud run deploy melanoma-detection --image $IMAGE_NAME:latest --region asia-south1 --memory 2Gi --platform managed
           #service is the name of the app you want to deploy on
           #gcloud run deploy melanoma-detection --image IMAGE_URL
