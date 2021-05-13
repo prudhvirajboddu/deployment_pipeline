@@ -19,7 +19,7 @@ class FixedDropout(tf.keras.layers.Dropout): # for tpu trained model to work in 
 from flask import Flask, redirect, url_for, request, render_template
 from tensorflow.python.keras.backend import dtype
 from werkzeug.utils import secure_filename
-from gevent.pywsgi import WSGIServer
+# from gevent.pywsgi import WSGIServer
 
 # Define a flask app
 app = Flask(__name__)

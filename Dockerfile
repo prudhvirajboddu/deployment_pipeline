@@ -32,11 +32,12 @@ RUN ln -s $(which python3) /usr/local/bin/python
 # COPY bashrc /etc/bash.bashrc
 # RUN chmod a+rwx /etc/bash.bashrc
 
-WORKDIR /app
+ENV PYTHONUNBUFFERED True
 
-EXPOSE 5000
-
-COPY . .
+# Copy local code to the container image.
+ENV APP_HOME /app
+WORKDIR $APP_HOME
+COPY . ./
 
 RUN curl https://storage.googleapis.com/models_melanoma/b6structure.h5 --output "b6structure.h5"
 
