@@ -21,8 +21,7 @@ RUN ln -s $(which python3) /usr/local/bin/python
 ENV PYTHONUNBUFFERED True
 
 # Copy local code to the container image.
-ENV APP_HOME /app
-WORKDIR $APP_HOME
+WORKDIR /app
 
 RUN curl https://storage.googleapis.com/models_melanoma/b6structure.h5 --output "b6structure.h5"
 

@@ -20,15 +20,19 @@ jobs:
         name: Setup Gcloud Account
         runs-on: ubuntu-latest
         env:
-          IMAGE_NAME: asia.gcr.io/experimental-285401/melanoma
+          PROJECT_ID: ${{ secrets.GCP_PROJECTID }}
+          SERVICE: melanoma-detection
+          REGION: asia-south1
+          # IMAGE_NAME: asia.gcr.io/$PROJECT_ID/$SERVICE
         steps:
 
         - name: Login
-          uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+          uses: google-github-actions/setup-gcloud@master
           with:
-            GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+            project_id: ${{ secrets.GCP_PROJECTID }}
             service_account_email: ${{ secrets.GCP_EMAIL }}
             service_account_key: ${{ secrets.GCP_CREDENTIALS }}
+            export_default_credentials: true
 
         - name: Configure Docker
           run: gcloud auth configure-docker --quiet
@@ -37,16 +41,16 @@ jobs:
           uses: actions/checkout@v2
 
         - name: Build Docker image
-          run: docker build . -t $IMAGE_NAME:latest
+          run: docker build . -t asia.gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{  github.sha }}
 
         - name: Push Docker image
-          run: docker push $IMAGE_NAME:latest
+          run: docker push asia.gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{  github.sha }}
         
-        - name: setting project id
-          run: gcloud config set project experimental-285401
-          #secrets not working in run command
+        # - name: setting project id
+        #   run: gcloud config set project experimental-285401
+        #   #secrets not working in run command
 
         - name: Deploy Docker image
-          run: gcloud run deploy melanoma-detection --image $IMAGE_NAME:latest --region asia-south1 --memory 2Gi --platform managed
+          run: gcloud run deploy $SERVICE --image asia.gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{  github.sha }} --region $REGION --memory 2Gi --platform managed
           #service is the name of the app you want to deploy on
           #gcloud run deploy melanoma-detection --image IMAGE_URL
