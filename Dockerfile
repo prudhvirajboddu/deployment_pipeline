@@ -23,9 +23,10 @@ ENV PYTHONUNBUFFERED True
 # Copy local code to the container image.
 ENV APP_HOME /app
 WORKDIR $APP_HOME
-COPY . .
 
 RUN curl https://storage.googleapis.com/models_melanoma/b6structure.h5 --output "b6structure.h5"
+
+COPY . .
 
 RUN pip3 install -r requirements.txt
 
