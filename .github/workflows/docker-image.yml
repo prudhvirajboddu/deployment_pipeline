@@ -43,4 +43,6 @@ jobs:
           run: docker push $IMAGE_NAME
 
         - name: Deploy Docker image
-          run: gcloud run deploy ${{ secrets.GCP_PROJECT_ID }} --image $IMAGE_NAME --region asia-south1 --memory 2Gi --platform managed
+          run: gcloud run deploy melanoma-detection --image $IMAGE_NAME --region asia-south1 --memory 2Gi --platform managed
+          #service is the name of the app you want to deploy on
+          #gcloud run deploy melanoma-detection --image IMAGE_URL
