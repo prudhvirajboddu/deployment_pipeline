@@ -74,7 +74,7 @@ def upload():
 if __name__ == '__main__':
     model=load_model('b6structure.h5',custom_objects={'FixedDropout':FixedDropout},compile=False)
     #just need to change the model if it is efficientnet trained on tpu add custom objects code 
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
     # http_server=WSGIServer(('0.0.0.0',5000),app)
     # http_server.serve_forever()
 
