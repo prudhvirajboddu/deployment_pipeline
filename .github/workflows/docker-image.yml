@@ -12,5 +12,35 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: prudhvi9999/new
+          repository: prudhvi9999/melanoma
           tags: ${{ github.run_number }}, latest
+    
+  deploy:
+
+        name: Setup Gcloud Account
+        runs-on: ubuntu-latest
+        env:
+          IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_APP_NAME }}
+        steps:
+
+        - name: Login
+          uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+          with:
+            GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+            service_account_email: ${{ secrets.GCP_EMAIL }}
+            service_account_key: ${{ secrets.GCP_CREDENTIALS }}
+
+        - name: Configure Docker
+          run: gcloud auth configure-docker --quiet
+
+        - name: Checkout repository
+          uses: actions/checkout@v2
+
+        - name: Build Docker image
+          run: docker build . -t $IMAGE_NAME
+
+        - name: Push Docker image
+          run: docker push $IMAGE_NAME
+
+        - name: Deploy Docker image
+          run: gcloud run deploy ${{ secrets.GCP_PROJECT_ID }} --image $IMAGE_NAME --region asia-south1 --memory 2Gi --platform managed
