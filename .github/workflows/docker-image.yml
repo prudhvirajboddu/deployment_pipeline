@@ -36,8 +36,8 @@ jobs:
         - name: Checkout repository
           uses: actions/checkout@v2
 
-        - name: Tag from hub image
-          run: docker tag prudhvi9999/melanoma:latest $IMAGE_NAME
+        - name: Build Docker image
+          run: docker build . -t $IMAGE_NAME
 
         - name: Push Docker image
           run: docker push $IMAGE_NAME
