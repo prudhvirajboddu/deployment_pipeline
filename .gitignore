@@ -35,4 +35,3 @@ __pycache__
 
 #         - name: Push the tagged Docker image
 #           run: docker push prudhvi9999/from_git_actions:$(date+%s)
-uploads/ISIC_0273046.jpg
