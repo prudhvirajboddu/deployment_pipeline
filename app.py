@@ -44,7 +44,6 @@ def index():
     # Main page
     return render_template('index.html')
 
-
 @app.route('/predict', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
@@ -61,9 +60,6 @@ def upload():
         preds = model_predict(file_path, model)
 
         os.remove(file_path)
-
-        # Process your result for human
-        pred_class = preds.argmax(axis=-1)
         if preds[0][0]>=0.5:
             return "Melanoma Lesion"#+"\nconfidence :"+format(preds[0][0]*100,'.2f')+"%"
         else:

@@ -4,34 +4,3 @@ __pycache__
 #files
 *.h5
 .gitattributes
-# name: Docker Image cLI
-
-# on:
-#   push:
-#      branches: [master]
-#   pull_request:
-#      branches: [master]
-
-# jobs:
-  
-#     build:
-       
-#         runs-on: ubuntu-latest
-
-#         steps: 
-#         - uses: actions/checkout@v2
-#         - name: docker login
-#           env:
-#              DOCKER_USER: ${{secrets.DOCKER_USER}}
-#              DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-
-#           run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
-
-#         - name: Build the tagged Docker image
-#           run: docker build . -f DockerFile -t from_git_actions:$(date+%s)
-        
-#         - name: Tagging image
-#           run: docker tag from:git_actions:$(date+%s) prudhvi9999/from_git_actions:$(date+%s)
-
-#         - name: Push the tagged Docker image
-#           run: docker push prudhvi9999/from_git_actions:$(date+%s)
