@@ -3,4 +3,5 @@
 __pycache__
 #files
 *.h5
+*.tflite
 .gitattributes
