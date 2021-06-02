@@ -23,7 +23,7 @@ ENV PYTHONUNBUFFERED True
 # Copy local code to the container image.
 WORKDIR /app
 
-RUN curl https://storage.googleapis.com/models_melanoma/b6structure.h5 --output "b6structure.h5"
+RUN curl https://storage.googleapis.com/models_melanoma/model.tflite --output "model.tflite"
 
 COPY . .
 
