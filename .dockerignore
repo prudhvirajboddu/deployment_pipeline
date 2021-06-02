@@ -1,5 +1,7 @@
 #ignorefiles
 .gitattributes
+.gitignore
+convert.py
 *.md
 *.h5
 #folders
