@@ -11,13 +11,18 @@ Project Aim is to build a web application for Detection of Melanoma
 Dataset is available on Kaggle .You can find it [here](https://www.kaggle.com/c/siim-isic-melanoma-classification/data)
 
 ### Training
-Experimental training  on both GPUs and TPUs   [training code](https://github.com/prudhvirajboddu/training) 
+Experimental training  on both GPUs and TPUs   [training code](https://github.com/prudhvirajboddu/training)
 
-### Try Locally using Docker 
-pull this image ```docker pull prudhvi9999/melanoma:latest```
+Converted to Tflite file for optimization and ran inference
 
-### Automation
-Using Github Actions pushed to docker and [Cloud](https://melanoma-detection-qxlq4snm7q-el.a.run.app/) for serving.
+## Deployment
 
+To Run this locally using docker
 
+```bash
+  docker run melanoma:latest
+```
+### Hosted on Azure container instances 
 
+check this [out](http://melanoma.centralindia.azurecontainer.io:5000/)
+  
