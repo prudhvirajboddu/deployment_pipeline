@@ -13,11 +13,16 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Melanoma Detection</a>
+    <nav class="navbar">
+        <div class="inner">
+          <h3 class="masthead-brand" style="justify-center">Melanoma Detection &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link" href="about.html">Features</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+          </nav>
         </div>
-    </nav>
+    </nav>    
     <div class="container">
         <div id="content" style="margin-top:2em">{% block content %}{% endblock %}</div>
     </div>
