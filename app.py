@@ -11,7 +11,7 @@ from tensorflow.keras.preprocessing import image
 from flask import Flask, redirect, url_for, request, render_template
 from tensorflow.python.keras.backend import dtype
 from werkzeug.utils import secure_filename
-# from gevent.pywsgi import WSGIServer
+from gevent.pywsgi import WSGIServer
 
 # Define a flask app
 app = Flask(__name__)
@@ -73,7 +73,7 @@ if __name__ == '__main__':
     inputs=interpreter.get_input_details()
     outputs = interpreter.get_output_details()
     #just need to change the model if it is efficientnet trained on tpu add custom objects code 
-    app.run(host="0.0.0.0", port=5000, debug=True)
-    # http_server=WSGIServer(('0.0.0.0',5000),app)
-    # http_server.serve_forever()
+    # app.run(host="0.0.0.0", port=5000, debug=True)
+    http_server=WSGIServer(('0.0.0.0',5000),app)
+    http_server.serve_forever()
 
