@@ -24,6 +24,8 @@ ENV PYTHONUNBUFFERED True
 WORKDIR /app
 
 RUN curl https://storage.googleapis.com/models_melanoma/b6structure.h5 --output "b6structure.h5"
+# b6structure.h5 file will not be avaialble . I deleted the objects from cloud 
+# If you want the model run the docker image and copy the file using docker cp continer://src dest_path
 
 COPY . .
 
