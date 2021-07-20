@@ -14,8 +14,8 @@ Dataset is available on Kaggle .You can find it [here](https://www.kaggle.com/c/
 Experimental training  on both GPUs and TPUs   [training code](https://github.com/prudhvirajboddu/training) 
 
 ### Try Locally using Docker 
-pull this image ```docker pull prudhvi9999/melanoma:latest```
+This image ```docker pull prudhvi9999/melanoma:17``` contains web app with model.h5 file
 
-
+This  image ```docker pull prudhvi9999/melanoma:latest```  contains web app with model.tflite file
 
 
