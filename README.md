@@ -16,8 +16,6 @@ Experimental training  on both GPUs and TPUs   [training code](https://github.co
 ### Try Locally using Docker 
 pull this image ```docker pull prudhvi9999/melanoma:latest```
 
-### Automation
-Using Github Actions pushed to docker and [Cloud](https://melanoma-detection-qxlq4snm7q-el.a.run.app/) for serving.
 
 
 
